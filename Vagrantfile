@@ -45,9 +45,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   [
+    ["miniondb",    "#{net_ip}.13",    "1024",    os ],
     ["minion1",    "#{net_ip}.11",    "1024",    os ],
     ["minion2",    "#{net_ip}.12",    "1024",    os ],
-    ["miniondb",    "#{net_ip}.13",    "1024",    os ],
     ["minionlb",    "#{net_ip}.14",    "1024",    os ]
      
   ].each do |vmname,ip,mem,os|
@@ -61,6 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       minion_config.vm.box = "#{os}"
       minion_config.vm.hostname = "#{vmname}"
       minion_config.vm.network "private_network", ip: "#{ip}"
+      minion_config.vm.synced_folder "./webfiles/", "/srv/webfiles"
 
       minion_config.vm.provision :salt do |salt|
         salt.minion_config = "saltstack/etc/#{vmname}"

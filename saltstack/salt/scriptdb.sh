@@ -11,13 +11,7 @@ sudo -u postgres -H sh -c "psql -d pg_ds -c 'CREATE TABLE cellphones(
     capacity INTEGER NOT NULL
 );'" -v
 
-sudo -u postgres -H sh -c "psql -d pg_ds -c 'INSERT INTO cellphones(
-    (id, name, brand, capacity) VALUES (1, 'note8', 'xiaomi', 128);'" -v
+sudo -u postgres psql -c '\c pg_ds;' -c '\i .\insert.sql;' 
 
-sudo -u postgres -H sh -c "psql -d pg_ds -c 'INSERT INTO cellphones(
-    (id, name, brand, capacity) VALUES (2, 'p20', 'huawei', 128);'" -v 
-
-sudo -u postgres -H sh -c "psql -d pg_ds -c 'INSERT INTO cellphones(
-    (id, name, brand, capacity) VALUES (3, 'a71', 'samsung', 128);'" -v
 
 

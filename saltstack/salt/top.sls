@@ -1,9 +1,5 @@
 base:
-  'minion1':
-    - web1
-  'minion2':
-    - web2
-  'minionlb':
+  '*minionlb*':
     - balancer
-  '*db*':
-    -database
+  '*miniondb*':
+    - database
