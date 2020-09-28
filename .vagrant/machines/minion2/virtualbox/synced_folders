@@ -1,0 +1,1 @@
+{"virtualbox":{"/srv/webfiles":{"guestpath":"/srv/webfiles","hostpath":"/home/german/Documents/examenSisOps/copiaparcial1/webfiles","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/german/Documents/examenSisOps/copiaparcial1","disabled":false,"__vagrantfile":true}}}
