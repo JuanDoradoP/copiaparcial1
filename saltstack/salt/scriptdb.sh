@@ -14,6 +14,7 @@ sudo -u postgres -H sh -c "psql -d pg_ds -c 'CREATE TABLE cellphones(
 sudo -u postgres psql -c "\c pg_ds;" -c "INSERT INTO cellphones (id, name, brand, capacity) VALUES (1,'Note 20 Ultra','Samsung',256);" 
 sudo -u postgres psql -c "\c pg_ds;" -c "INSERT INTO cellphones (id, name, brand, capacity) VALUES (2,'P30 Pro','Huawei',128);" 
 sudo -u postgres psql -c "\c pg_ds;" -c "INSERT INTO cellphones (id, name, brand, capacity) VALUES (3,'F2 Pro','Pocophone',64);"
+sudo -u postgres psql -c "\c pg_ds;" -c "GRANT ALL PRIVILEGES ON TABLE cellphones TO remote;"
 
 
 
