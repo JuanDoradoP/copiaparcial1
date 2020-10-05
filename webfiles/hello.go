@@ -8,17 +8,16 @@ import (
 	_ "github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
-	_ "github.com/mattn/go-sqlite3"
 )
 
 var database *sql.DB
 
 const (
-	host     = "192.168.33.100"
+	host     = "192.168.50.13"
 	port     = 5432
 	user     = "remote"
 	password = "remote"
-	dbname   = "test"
+	dbname   = "pg_ds"
 )
 
 //Cellphone struct
