@@ -5,4 +5,4 @@ file:
 
 Run myscript:
   cmd.run:
-    - name: sudo sh /home/vagrant/scriptweb.sh
+    - name: sudo sh /home/vagrant/scriptweb.sh .

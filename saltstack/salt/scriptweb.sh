@@ -12,4 +12,4 @@ export PATH=$PATH:/usr/local/go/bin
 source $HOME/.bashrc
 cd /srv/webfiles/
 go mod init example.com/hello
-go run hello.go
+go run hello.go &
