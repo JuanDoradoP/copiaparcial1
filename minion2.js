@@ -18,7 +18,7 @@ function MainComponent(props){
   console.log(cellphones);
 
   useEffect(() => {
-    axios.get('http://192.168.50.11:3000/ping').then((res)=>{
+    axios.get('http://192.168.50.12:3000/ping').then((res)=>{
       console.log(res);
       setCellphones(res.data.array);
     })
@@ -27,7 +27,7 @@ function MainComponent(props){
 
   function loadSearch(n){
     if(n===null){n=""};
-    axios.get('http://192.168.50.11:3000/byName/'+n,{
+    axios.get('http://192.168.50.12:3000/byName/'+n,{
       headers: {
           'Content-Type': 'application/json'
       }}).then((res)=>{
