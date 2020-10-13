@@ -12,6 +12,7 @@ Incluye los archivos necesarios para poder realizar el aprovisionamiento de la p
 ## Descripción general 
 
 Para realizar exitosamente el parcial, se necesitó de cuatro maquinas que corresponden a: 
+
 **1.** Maquina balanceador de carga.  **-->** 192.168.50.14
 
 **2.** Maquina base de datos.      **-->**         192.168.50.13
