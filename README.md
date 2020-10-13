@@ -13,8 +13,11 @@ Incluye los archivos necesarios para poder realizar el aprovisionamiento de la p
 
 Para realizar exitosamente el parcial, se necesitó de cuatro maquinas que corresponden a: 
 **1.** Maquina balanceador de carga.  **-->** 192.168.50.14
+
 **2.** Maquina base de datos.      **-->**         192.168.50.13
+
 **3.** Maquina servidor web 1 		 **-->**		192.168.50.11
+
 **4.** Maquina servidor web 2. 	 **-->**		192.168.51.12
 
 Para el despliegue automático de estas maquinas se utilizó la herramienta **Vagrant**. Para la gestión de la configuración se uso la herramienta **SaltStack**. 
@@ -75,5 +78,7 @@ Reconocimos los dos comandos principales requeridos para poder gestionar la conf
 La herramienta que se escogió  para el balanceador de carga fue haproxy.  es un proxy inverso que distribuye el tráfico de red o de una aplicación a varios servidores. Esta herramienta ya había sido trabajada en el workshop-2 de sistemas distribuidos. En el archivo de configuración del balanceador (balancer.sls) Se define lo siguiente:
 
 **1.** Se instala el paquete haproxy por medio del pkg.installed.
+
 **2.** Se añade al  archivo haproxy.cfg la configuración del balanceador de carga. Esto define el puerto por el cual recibirá peticiones el balanceador y las direcciones de los servidores donde deberá redireccionar las peticiones.
+
 **3.**  reiniciar el servicio de haproxy para que se cargue la configuración.
