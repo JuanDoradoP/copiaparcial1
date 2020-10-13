@@ -1,0 +1,2 @@
+# copiaparcial1
+Borrador
