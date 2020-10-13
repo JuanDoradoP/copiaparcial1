@@ -106,9 +106,7 @@ func main() {
 	fmt.Println("Successfully connected!")
 
 	r := gin.Default()
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"*"}
-	r.Use(cors.New(config))
+	r.Use(cors.Default())
 	r.GET("/ping", getAll)
 	r.GET("/byName/:name", getByName)
 

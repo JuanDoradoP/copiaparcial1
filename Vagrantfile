@@ -62,7 +62,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       minion_config.vm.hostname = "#{vmname}"
       minion_config.vm.network "private_network", ip: "#{ip}"
       minion_config.vm.synced_folder "./webfiles/", "/srv/webfiles"
-      minion_config.vm.provision "file", source: "./#{vmname}.js", destination: "/srv/webfiles/front/my-app/src/index.js"
+
 
       minion_config.vm.provision :salt do |salt|
         salt.minion_config = "saltstack/etc/#{vmname}"

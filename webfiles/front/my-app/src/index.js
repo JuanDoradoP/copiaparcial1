@@ -11,14 +11,15 @@ ReactDOM.render(
 
 function MainComponent(props){
 
-  axios.defaults.baseURL="";
   const [cellphones,setCellphones]=useState([]);
   const [name, setName] = useState('');
   const[getCells, setGetCells]=useState(true);
+  const[ip,setIp]=useState(process.env.REACT_APP_IP);
+  console.log(process.env.REACT_APP_IP);
   console.log(cellphones);
 
   useEffect(() => {
-    axios.get('http://192.168.50.11:3000/ping').then((res)=>{
+    axios.get('http://'+ip+':8080/ping').then((res)=>{
       console.log(res);
       setCellphones(res.data.array);
     })
@@ -27,7 +28,7 @@ function MainComponent(props){
 
   function loadSearch(n){
     if(n===null){n=""};
-    axios.get('http://192.168.50.11:3000/byName/'+n,{
+    axios.get('http://'+ip+':8080/byName/'+n,{
       headers: {
           'Content-Type': 'application/json'
       }}).then((res)=>{
