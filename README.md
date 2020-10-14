@@ -91,7 +91,13 @@ La herramienta que se escogió  para el balanceador de carga fue haproxy.  es un
 
 La realización de los servidores web se hizo sobre el minion 1 y minion2. Para el backend se utilizo el lenguaje GO. Y  para el frontend el lenguaje React.
 
-//	completar //
+**1.**	Primero, se desarrolló el servicio REST en el backend utilizando el framework GIN. Se establecieron dos métodos GET. Uno que permite obtener todos los registros guardados en la base de datos, y otro para filtrar por nombre. La base de datos tiene que estar previamente desplegada. Para manejar los paquetes utilizados, se utiliza la tecnología de módulos de Go, que descarga e instala todas las dependencias necesarias al momento de correr el archivo.
+
+**2.**	Después, se desarrolló el frontend utilizando la librería Axios, que permite hacer peticiones al backend. Las dependencias necesarias se cargan en el archivo package.json, y se utiliza el manejador de paquetes Yarn para que las instale al momento de ejecución.
+
+**3.**	Estos dos proyectos preconstruidos se pasan a los minions mediante las carpetas compartidas de Vagrant.
+
+**4.**	Se ejecuta el estado de Salt, el cual instala los programas necesarios, carga las variables de entorno al React, en las cuales están las direcciones IP de cada dispositivo, y ejecuta el servidor frontend y backend.
 
 
 
@@ -140,11 +146,11 @@ Cuando termine de ejecutar el comando. Se puede ingresar por medio del navegador
 
 ## Problemas encontrados
 
-**1.** El primer problema con el que nos encontramos fue el desconocimiento que teníamos sobre algunas herramientas. Aunque ya habiamos tenido acercamiento con haproxy, Vagrant y  postgresql. Era la primera vez que trabajabamos con **SaltStack** y **Go**. Con lo cual antes de comenzar a gestionar el código de la solución, fue un reto aprender sobre el funcionamiento  de dichas herramientas. 
+**1.** El primer problema con el que nos encontramos fue el desconocimiento que teníamos sobre algunas herramientas. Aunque ya habiamos tenido acercamiento con haproxy, React,  Vagrant y  postgresql. Era la primera vez que trabajabamos con **SaltStack** y **Go**. Con lo cual antes de comenzar a gestionar el código de la solución, fue un reto aprender sobre el funcionamiento  de dichas herramientas. 
 
 **2.** Hubo un problema con la nomenclatura de los archivos de configuración de SaltStack. Pues no era solamente conocer cuales comandos utilizar, sino también la escritura de ellos. Por ejemplo: las comillas simples para definir los estados. Los espacios entre cada instrucción. o el guion antes de cada estado.
 
 **3.** También tuvimos problemas de sintaxis en la construcción de la tabla de datos.  Pues no habíamos escrito de la manera correcta las comillas para los INSERT. 
 
-**4** Al final, tuvimos un problema con las direcciones ip de los servidores web. Pues teníamos que pasar individualmente cada dirección al minion1 y minion2 respectivamente. Intentamos varias opciones, pero al final logramos esta configuración por medio de variables entornos. En donde se designa dinámicamente la dirección a cada minion.
+**4** Al final, tuvimos un problema con las direcciones ip de los servidores web. Pues teníamos que pasar individualmente cada dirección al minion1 y minion2 respectivamente. Intentamos varias opciones, pero al final logramos esta configuración por medio de variables entorno. En donde se designa dinámicamente la dirección a cada minion.
 
