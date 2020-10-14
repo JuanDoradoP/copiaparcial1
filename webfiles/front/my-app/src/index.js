@@ -39,6 +39,7 @@ function MainComponent(props){
 
   return(
     <div>
+      <p>Servidor que responde: {ip}</p>
       <p>Busque el celular que desea</p>
       <button onClick={()=>setGetCells(true)}>Mostrar todos</button>
       <input onChange={event => {
