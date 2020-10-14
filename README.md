@@ -3,6 +3,7 @@
 ## Integrantes
 
 Juan David Paz Dorado - **A00328036**
+
 German Andrés Carvajal - **A00134280**	
 
 Este es el repositorio correspondiente al primer parcial de sistemas distribuidos. [https://github.com/JuanDoradoP/copiaparcial1](https://github.com/JuanDoradoP/copiaparcial1)
@@ -83,3 +84,67 @@ La herramienta que se escogió  para el balanceador de carga fue haproxy.  es un
 **2.** Se añade al  archivo haproxy.cfg la configuración del balanceador de carga. Esto define el puerto por el cual recibirá peticiones el balanceador y las direcciones de los servidores donde deberá redireccionar las peticiones.
 
 **3.**  reiniciar el servicio de haproxy para que se cargue la configuración.
+
+
+
+## Servidores web
+
+La realización de los servidores web se hizo sobre el minion 1 y minion2. Para el backend se utilizo el lenguaje GO. Y  para el frontend el lenguaje React.
+
+//	completar //
+
+
+
+## Base de datos
+
+Para la realización de la base de datos se utilizo la herramienta postgresql. La base de datos consiste en una tabla celulares, en donde se pueden hacer consultas de tipo SELECT por medio de los servidores web. 
+
+**1.** Lo primero que se realizó fue instalar el paquete postgresql por medio del pkg.installed.
+
+**2.** Posteriormente se procede a ejectuar comandos propios de postgresql que nos permiten crear el usuario, la base de datos, etc.
+
+**3.** Por ultimo se ejecuta el script  *scriptdb*, el cual contiene la creación de la tabla de datos y los INSERT de los celulares de prueba que podrán consultar por medio de los servidores web.
+
+
+
+## Integración
+
+Para integrar todos los servicios implementados en cada minion se hizo uso del archivo top.sls, en el cual se define los estados que se deben aplicar dependiendo de cada maquina. 
+
+- Para el miniondb, se definió el archivo balancer.sls 
+
+- Para el minionlb, se definió el archivo database.sls
+
+- Y para el minion1 minion2 se definió el archivo minion.sls 
+
+
+En cada uno de estos archivos de configuración estan los comandos y scripts necesarios para correr los servicios correspondientes. 
+
+Posteriormente se ejecuta el comando:
+
+    sudo salt '*' apply.state 
+
+Que aprovisiona todas las maquinas con las configuraciones hechas anteriormente. Es importante mencionar que durante el proceso de construcción del parcial, se uso el aprovisionamiento individual para comprobar que todo iba perfectamente, tal como se muestra a continuación.
+
+    sudo salt 'miniondb' apply.state 
+
+    sudo salt 'minionlb' apply.state 
+
+    sudo salt 'minion1' apply.state 
+
+    sudo salt 'minion2' apply.state 
+
+Cuando termine de ejecutar el comando. Se puede ingresar por medio del navegador a la pagina web designada en el front. Y comprobar el funcionamiento de la plataforma. Se puede hacer uso del botón ***mostrar todos***  para ver los celulares de prueba que estan. Y posteriormente buscar individualmente cada celular por  su nombre. 
+
+
+
+## Problemas encontrados
+
+**1.** El primer problema con el que nos encontramos fue el desconocimiento que teníamos sobre algunas herramientas. Aunque ya habiamos tenido acercamiento con haproxy, Vagrant y  postgresql. Era la primera vez que trabajabamos con **SaltStack** y **Go**. Con lo cual antes de comenzar a gestionar el código de la solución, fue un reto aprender sobre el funcionamiento  de dichas herramientas. 
+
+**2.** Hubo un problema con la nomenclatura de los archivos de configuración de SaltStack. Pues no era solamente conocer cuales comandos utilizar, sino también la escritura de ellos. Por ejemplo: las comillas simples para definir los estados. Los espacios entre cada instrucción. o el guion antes de cada estado.
+
+**3.** También tuvimos problemas de sintaxis en la construcción de la tabla de datos.  Pues no habíamos escrito de la manera correcta las comillas para los INSERT. 
+
+**4** Al final, tuvimos un problema con las direcciones ip de los servidores web. Pues teníamos que pasar individualmente cada dirección al minion1 y minion2 respectivamente. Intentamos varias opciones, pero al final logramos esta configuración por medio de variables entornos. En donde se designa dinámicamente la dirección a cada minion.
+
